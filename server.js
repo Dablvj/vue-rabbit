@@ -17,7 +17,7 @@ function readFilesInDirectory(directory) {
         }
         if (stats.isFile()) {
           
-          const newFilePath = filePath.replace('[一手资料+v 554250521]','')
+          const newFilePath = filePath.replace('[一手资料＋v 554250521]','')
           fs.rename(filePath, newFilePath, (err) => {
             if (err) {
               console.error('文件名修改失败：', err);
@@ -33,4 +33,4 @@ function readFilesInDirectory(directory) {
   });
 }
 
-readFilesInDirectory("./");
+readFilesInDirectory("./books/");
