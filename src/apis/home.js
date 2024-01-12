@@ -6,7 +6,7 @@ export function getBannerAPI(params = {}) {
   // 默认为1 商品为2
   const { distributionSite = "1" } = params;
   return httpInstance({
-    url: "/home/banner",
+    url: `${distributionSite == "1" ? "/home/banner#mock" : "/home/banner"}`,
     params: {
       distributionSite,
     },
@@ -20,7 +20,7 @@ export function getBannerAPI(params = {}) {
  */
 export const findNewAPI = () => {
   return httpInstance({
-    url: "/home/new",
+    url: "/home/new#mock",
   });
 };
 
@@ -31,7 +31,7 @@ export const findNewAPI = () => {
  */
 export const getHotAPI = () => {
   return httpInstance({
-    url: "/home/hot",
+    url: "/home/hot#mock",
   });
 };
 
@@ -42,6 +42,6 @@ export const getHotAPI = () => {
  */
 export const getGoodsAPI = () => {
   return httpInstance({
-    url: "/home/goods",
+    url: "/home/goods#mock",
   });
 };

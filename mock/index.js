@@ -5,6 +5,7 @@ export default [
     url: "/home/banner",
     method: "get",
     response: (a, b, c) => {
+        console.log(2222)
       console.log(a, b, c);
       return gethomebanner1;
     },
@@ -17,7 +18,7 @@ export default [
     },
   },
   {
-    url: "/home/host",
+    url: "/home/hot",
     method: "get",
     response: () => {
       return gethomehot;

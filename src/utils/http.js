@@ -4,7 +4,7 @@ import { ElMessage } from "element-plus";
 import { useUserStore } from "@/stores/userStore";
 import router from "@/router";
 const httpInstance = axios.create({
-//   baseURL: "http://pcapi-xiaotuxian-front-devtest.itheima.net",
+  //   baseURL: "http://pcapi-xiaotuxian-front-devtest.itheima.net",
   timeout: 5000,
 });
 
@@ -13,6 +13,11 @@ const httpInstance = axios.create({
 // axios请求拦截器
 httpInstance.interceptors.request.use(
   (config) => {
+    //兼容mock和实际请求两种方式
+    if (!config.url.includes("mock")) {
+      config.baseURL = "http://pcapi-xiaotuxian-front-devtest.itheima.net";
+    }
+
     // 1. 从pinia获取token数据
     const userStore = useUserStore();
     // 2. 按照后端的要求拼接token数据
@@ -38,10 +43,11 @@ httpInstance.interceptors.response.use(
     //401token失效处理
     //1、清除本地用户数据
     //2、跳转登录页
-    if (e.response.status === 401){
-        userStore.clearUserInfo()
-        router.push('/login')
-    } return Promise.reject(e);
+    if (e.response.status === 401) {
+      userStore.clearUserInfo();
+      router.push("/login");
+    }
+    return Promise.reject(e);
   }
 );
 
