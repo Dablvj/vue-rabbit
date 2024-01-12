@@ -1,6 +1,7 @@
 {
   "name": "vue-rabbit",
   "version": "0.0.0",
+  "description": "vite、vue3、Element Plus、script setup组合式api、电商前台",
   "private": true,
   "scripts": {
     "dev": "vite",
